@@ -2,6 +2,7 @@ import os
 from flask import Flask, render_template, request, redirect, session
 from pymongo import MongoClient
 from bson.objectid import ObjectId
+from dotenv import load_dotenv
 
 ADMIN_KEY = os.environ.get("ADMIN_KEY")
 MONGO_URI = os.environ.get("MONGO_URI")
@@ -12,6 +13,22 @@ app = Flask(
     static_folder="../static"
 )
 
+
+
+load_dotenv()
+
+# Fetch the URI
+MONGO_URI = os.getenv("MONGO_URI")
+
+# Safety Check: If MONGO_URI is missing, the app will explain why in the logs
+if not MONGO_URI:
+    print("CRITICAL: MONGO_URI environment variable is not set!")
+    # You can set a dummy string to prevent the immediate InvalidURI crash 
+    # during build, but the app will still fail on data fetch.
+    MONGO_URI = "mongodb://localhost:27017" 
+
+client = MongoClient(MONGO_URI)
+db = client.music_portfolio
 app.secret_key = os.environ.get("SECRET_KEY", "secret")
 
 # MongoDB connection
