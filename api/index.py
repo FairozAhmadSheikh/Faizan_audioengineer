@@ -3,7 +3,6 @@ from flask import Flask, render_template, request, redirect, session
 from pymongo import MongoClient
 from dotenv import load_dotenv
 from bson.objectid import ObjectId
-from flask import Flask, render_template, request, redirect, session 
 load_dotenv()
 
 app = Flask(
@@ -101,4 +100,4 @@ def handler(request):
 
 
 if __name__ == "__main__":
-    app.run(debug=True, port=5000)
+    app.run(debug=True)
