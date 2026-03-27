@@ -14,24 +14,22 @@ app = Flask(
 
 app.secret_key = os.environ.get("SECRET_KEY", "secret")
 
+# MongoDB connection
 client = MongoClient(MONGO_URI)
-db = client.music_portfolio
-projects = db.projects
+db = client["music_portfolio"]
+projects = db["projects"]
 
 
 @app.route("/")
 def home():
-
-    data = list(projects.find().sort("_id",-1))
-
+    data = list(projects.find().sort("_id", -1))
     return render_template("index.html", projects=data)
 
 
-@app.route("/admin", methods=["GET","POST"])
+@app.route("/admin", methods=["GET", "POST"])
 def admin():
 
     if request.method == "POST":
-
         key = request.form.get("key")
 
         if key == ADMIN_KEY:
@@ -47,8 +45,7 @@ def dashboard():
     if not session.get("admin"):
         return redirect("/admin")
 
-    data = list(projects.find().sort("_id",-1))
-
+    data = list(projects.find().sort("_id", -1))
     return render_template("admin_dashboard.html", projects=data)
 
 
@@ -78,13 +75,10 @@ def delete(id):
         return "Unauthorized"
 
     projects.delete_one({"_id": ObjectId(id)})
-
     return redirect("/dashboard")
 
 
 @app.route("/logout")
 def logout():
-
     session.clear()
-
     return redirect("/")
