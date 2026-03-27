@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Faizan Musavi | Music Producer</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+<style>
+
+body{
+margin:0;
+font-family:Arial, Helvetica, sans-serif;
+background:#0e0e0e;
+color:white;
+}
+
+/* HERO */
+
+.hero{
+display:flex;
+align-items:center;
+justify-content:center;
+gap:60px;
+padding:100px 40px;
+flex-wrap:wrap;
+background:linear-gradient(120deg,#0f0f0f,#1a1a1a);
+}
+
+.hero img{
+width:260px;
+border-radius:16px;
+box-shadow:0 20px 50px rgba(0,0,0,0.6);
+}
+
+.hero-text{
+max-width:500px;
+}
+
+.hero-text h1{
+font-size:48px;
+margin:0;
+}
+
+.hero-text h2{
+font-weight:400;
+color:#aaa;
+}
+
+.hero-text p{
+color:#bbb;
+}
+
+.social{
+margin-top:20px;
+}
+
+.social a{
+margin-right:10px;
+text-decoration:none;
+color:white;
+border:1px solid #444;
+padding:8px 14px;
+border-radius:6px;
+}
+
+/* ABOUT */
+
+.about{
+max-width:900px;
+margin:auto;
+padding:80px 20px;
+line-height:1.7;
+color:#ccc;
+}
+
+.about h2{
+text-align:center;
+margin-bottom:30px;
+}
+
+/* FILM PROJECT */
+
+.film{
+background:#161616;
+padding:60px 20px;
+text-align:center;
+}
+
+.film a{
+color:#4da6ff;
+text-decoration:none;
+}
+
+/* PROJECT GRID */
+
+.projects{
+max-width:1200px;
+margin:auto;
+padding:80px 20px;
+}
+
+.projects h2{
+text-align:center;
+margin-bottom:40px;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+gap:30px;
+}
+
+.card{
+background:#1a1a1a;
+padding:20px;
+border-radius:12px;
+box-shadow:0 10px 30px rgba(0,0,0,0.5);
+}
+
+.card h3{
+margin-top:0;
+}
+
+iframe{
+width:100%;
+border-radius:12px;
+margin-top:10px;
+}
+
+/* FOOTER */
+
+footer{
+text-align:center;
+padding:40px;
+color:#777;
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+<img src="{{ url_for('static', filename='faizan.jpg') }}">
+
+<div class="hero-text">
+
+<h1>Faizan Musavi</h1>
+
+<h2>Music Producer & Audio Engineer</h2>
+
+<p>Srinagar, Jammu & Kashmir, India</p>
+
+<div class="social">
+
+<a href="https://instagram.com/faizanmusavi" target="_blank">Instagram</a>
+
+<a href="https://open.spotify.com/artist/6QehkzoxJzfzqzGgvo0bRN" target="_blank">Spotify</a>
+
+<a href="mailto:faizanmusavi6@gmail.com">Email</a>
+
+<a href="/admin">Admin</a>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- ABOUT ARTIST -->
+
+<section class="about">
+    <div class="about-container">
+
+        <div class="about-image">
+            <img src="/static/faizan.jpg" alt="Artist Photo">
+        </div>
+
+        <div class="about-text">
+            <h2>About the Artist</h2>
+
+            <p>
+                A passionate music producer and composer dedicated to crafting 
+                immersive sound experiences across film, digital media, and 
+                independent music projects.
+            </p>
+
+            <p>
+                With experience in cinematic scoring, ambient sound design, and 
+                contemporary electronic production, the artist has contributed 
+                to a variety of creative works including short films, indie 
+                productions, and collaborative multimedia projects.
+            </p>
+
+            <p>
+                His work blends emotional storytelling with modern production 
+                techniques, creating soundscapes that enhance visual narratives 
+                and resonate deeply with audiences.
+            </p>
+
+            <p>
+                From film soundtracks to experimental releases, each project 
+                reflects a commitment to originality, atmosphere, and sonic 
+                craftsmanship.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+
+
+<!-- FILM PROJECT -->
+
+<section class="film">
+
+<h2>Film Scoring</h2>
+
+<p>
+
+Composed and mixed the original score for the feature film
+
+<strong>Tasrufdar (Djinns of Kashmir)</strong> — presented by renowned filmmaker
+
+<strong>Sudhir Mishra</strong> and directed by <strong>Kapil Matoo</strong>.
+
+</p>
+
+<p>
+
+View film details on IMDb:
+
+<a href="https://m.imdb.com/title/tt37743623/?ref_=ext_shr_lnk" target="_blank">
+Tasrufdar on IMDb
+</a>
+
+</p>
+
+</section>
+
+
+
+<!-- PROJECTS -->
+
+<section class="projects">
+
+<h2>Selected Work</h2>
+
+<div class="grid">
+
+{% for project in projects %}
+
+<div class="card">
+
+<h3>{{ project.title }}</h3>
+
+<p>{{ project.description }}</p>
+
+
+{% if "spotify.com" in project.link %}
+
+<iframe
+src="https://open.spotify.com/embed/{{ project.link.split('spotify.com/')[1].split('?')[0] }}"
+height="152"
+frameborder="0"
+allow="autoplay; clipboard-write; encrypted-media">
+</iframe>
+
+
+{% elif "youtube.com" in project.link %}
+
+<iframe
+height="220"
+src="https://www.youtube.com/embed/{{ project.link.split('v=')[1].split('&')[0] }}"
+frameborder="0"
+allowfullscreen>
+</iframe>
+
+
+{% elif "youtu.be" in project.link %}
+
+<iframe
+height="220"
+src="https://www.youtube.com/embed/{{ project.link.split('youtu.be/')[1] }}"
+frameborder="0"
+allowfullscreen>
+</iframe>
+
+
+{% else %}
+
+<a href="{{ project.link }}" target="_blank">Open Project</a>
+
+{% endif %}
+
+</div>
+
+{% endfor %}
+
+</div>
+
+</section>
+
+
+
+<footer>
+
+© 2026 Faizan Musavi — Music Producer & Audio Engineer
+
+</footer>
+
+
+</body>
+
+</html>

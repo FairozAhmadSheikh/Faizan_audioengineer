@@ -1,0 +1,355 @@
+body{
+background:#0b0b0b;
+color:white;
+font-family:Inter,Arial;
+margin:0;
+}
+
+.hero{
+text-align:center;
+padding:80px 20px;
+background:linear-gradient(#000,#111);
+}
+
+.profile{
+width:180px;
+border-radius:100px;
+margin-bottom:20px;
+}
+
+.links a{
+margin:10px;
+color:#00e1ff;
+text-decoration:none;
+font-weight:bold;
+}
+
+.about{
+padding:60px;
+max-width:800px;
+margin:auto;
+text-align:center;
+}
+
+.projects{
+padding:60px;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:30px;
+}
+
+.card{
+background:#151515;
+padding:25px;
+border-radius:14px;
+transition:0.3s;
+}
+
+.card:hover{
+transform:translateY(-6px);
+background:#1e1e1e;
+}
+
+.card a{
+color:#00e1ff;
+}
+
+.film{
+padding:60px;
+text-align:center;
+}
+
+footer{
+text-align:center;
+padding:30px;
+color:#aaa;
+}
+
+.admin-card{
+background:#1b1b1b;
+padding:15px;
+margin:10px;
+}
+iframe{
+border-radius:12px;
+margin-top:10px;
+}
+.about {
+    padding: 80px 20px;
+    background: #111;
+}
+
+.about-container {
+    max-width: 1100px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 350px 1fr;
+    gap: 50px;
+    align-items: center;
+}
+
+.about-image img {
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+}
+
+.about-text h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.about-text p {
+    color: #ccc;
+    line-height: 1.8;
+    margin-bottom: 16px;
+}
+
+.admin-page {
+    max-width: 600px;
+    margin: 60px auto;
+    padding: 40px;
+    background: #1b1b1b;
+    border-radius: 10px;
+}
+
+.admin-page h2 {
+    margin-bottom: 25px;
+}
+
+.admin-page form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.admin-page input,
+.admin-page textarea {
+    padding: 12px;
+    border-radius: 6px;
+    border: none;
+    background: #2b2b2b;
+    color: white;
+}
+
+.admin-page textarea {
+    min-height: 100px;
+}
+
+.admin-page button {
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    background: #1db954;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.admin-page button:hover {
+    background: #1ed760;
+}
+
+body {
+    margin:0;
+    font-family: Arial, Helvetica, sans-serif;
+    background:#0e0e0e;
+    color:white;
+}
+
+.dashboard{
+    max-width:1100px;
+    margin:auto;
+    padding:40px;
+}
+
+h1{
+    margin-bottom:30px;
+}
+
+.add-project{
+    background:#1a1a1a;
+    padding:25px;
+    border-radius:10px;
+    margin-bottom:40px;
+}
+
+.add-project form{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+}
+
+.add-project input,
+.add-project textarea{
+    padding:12px;
+    border:none;
+    border-radius:6px;
+    background:#2b2b2b;
+    color:white;
+}
+
+.add-project textarea{
+    min-height:100px;
+}
+
+.add-project button{
+    padding:12px;
+    border:none;
+    border-radius:6px;
+    background:#1db954;
+    color:white;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.projects-section{
+    margin-top:20px;
+}
+
+.projects-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:20px;
+}
+
+.project-card{
+    background:#1a1a1a;
+    padding:20px;
+    border-radius:10px;
+}
+
+.project-card h3{
+    margin-bottom:10px;
+}
+
+.project-card p{
+    color:#bbb;
+    margin-bottom:15px;
+}
+
+.delete-btn{
+    display:inline-block;
+    margin-top:10px;
+    color:#ff4c4c;
+    text-decoration:none;
+}
+/* Dashboard Layout */
+
+.dashboard-container{
+max-width:1100px;
+margin:auto;
+padding:40px;
+}
+
+.dashboard-header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:40px;
+}
+
+.logout-btn{
+background:#ff4c4c;
+color:white;
+padding:8px 16px;
+text-decoration:none;
+border-radius:6px;
+}
+
+.dashboard-grid{
+display:grid;
+grid-template-columns:1fr 2fr;
+gap:30px;
+}
+
+
+/* Add Project Card */
+
+.add-project-card{
+background:#1a1a1a;
+padding:25px;
+border-radius:10px;
+}
+
+.add-project-card form{
+display:flex;
+flex-direction:column;
+gap:12px;
+}
+
+.add-project-card input,
+.add-project-card textarea{
+padding:10px;
+border:none;
+border-radius:6px;
+background:#2a2a2a;
+color:white;
+}
+
+.add-project-card textarea{
+min-height:80px;
+}
+
+.add-project-card button{
+background:#1db954;
+border:none;
+padding:12px;
+color:white;
+border-radius:6px;
+font-weight:bold;
+cursor:pointer;
+}
+
+
+/* Projects Section */
+
+.projects-card{
+background:#1a1a1a;
+padding:25px;
+border-radius:10px;
+}
+
+.projects-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:15px;
+margin-top:15px;
+}
+
+.project-item{
+background:#2a2a2a;
+padding:15px;
+border-radius:8px;
+}
+
+.project-item h3{
+margin-bottom:6px;
+}
+
+.project-item p{
+color:#bbb;
+font-size:14px;
+}
+
+.delete-btn{
+display:inline-block;
+margin-top:10px;
+color:#ff5c5c;
+text-decoration:none;
+font-size:14px;
+}
+
+
+/* Mobile Responsive */
+
+@media (max-width:768px){
+
+.dashboard-grid{
+grid-template-columns:1fr;
+}
+
+}
