@@ -1,19 +1,18 @@
 import os
 from flask import Flask, render_template, request, redirect, session
 from pymongo import MongoClient
-from dotenv import load_dotenv
 from bson.objectid import ObjectId
-load_dotenv()
+
+ADMIN_KEY = os.environ.get("ADMIN_KEY")
+MONGO_URI = os.environ.get("MONGO_URI")
 
 app = Flask(
     __name__,
     template_folder="../templates",
     static_folder="../static"
 )
-app.secret_key = os.getenv("SECRET_KEY", "supersecret")
 
-ADMIN_KEY = os.getenv("ADMIN_KEY")
-MONGO_URI = os.getenv("MONGO_URI")
+app.secret_key = os.environ.get("SECRET_KEY", "secret")
 
 client = MongoClient(MONGO_URI)
 db = client.music_portfolio
@@ -25,14 +24,11 @@ def home():
 
     data = list(projects.find().sort("_id",-1))
 
-    return render_template(
-        "index.html",
-        projects=data
-    )
+    return render_template("index.html", projects=data)
 
 
-@app.route("/admin", methods=["GET", "POST"])
-def admin_login():
+@app.route("/admin", methods=["GET","POST"])
+def admin():
 
     if request.method == "POST":
 
@@ -41,8 +37,6 @@ def admin_login():
         if key == ADMIN_KEY:
             session["admin"] = True
             return redirect("/dashboard")
-
-        return "Invalid Key"
 
     return render_template("admin_login.html")
 
@@ -76,6 +70,7 @@ def add():
 
     return redirect("/dashboard")
 
+
 @app.route("/delete/<id>")
 def delete(id):
 
@@ -93,11 +88,3 @@ def logout():
     session.clear()
 
     return redirect("/")
-
-
-def handler(request):
-    return app(request.environ, lambda status, headers: None)
-
-
-if __name__ == "__main__":
-    app.run(debug=True)
